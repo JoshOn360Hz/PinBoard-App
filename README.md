@@ -132,7 +132,7 @@ PinBoard follows modern iOS development patterns:
 
 - **MVVM Architecture**: Clean separation of concerns
 - **SwiftUI**: Declarative UI with state management
-- **Core Data**: Local data persistence with CloudKit ready structure
+- **Core Data**: Local data persistence
 - **Widget Extensions**: Native widget support with App Intents
 - **Live Activities**: Real-time updates using ActivityKit
 
