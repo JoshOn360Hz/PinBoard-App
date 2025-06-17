@@ -68,7 +68,7 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/PinBoard-App.git
+   git clone https://github.com/JoshOn360Hz/PinBoard-App.git
    cd PinBoard-App
    ```
 
