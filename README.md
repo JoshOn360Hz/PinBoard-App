@@ -1,4 +1,4 @@
-# 📌 PinBoard
+# PinBoard
 
 <div align="center">
   <img src="PinBoard/Assets.xcassets/AppIcon.appiconset/icon-default.png" alt="PinBoard Logo" width="100" height="100">
