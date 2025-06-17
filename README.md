@@ -9,6 +9,12 @@
   ![Swift](https://img.shields.io/badge/Swift-5.0+-orange.svg)
   ![SwiftUI](https://img.shields.io/badge/SwiftUI-3.0+-green.svg)
   ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+  
+  <br>
+  
+  <a href="https://testflight.apple.com/join/NmpwygSt">
+    <img src="https://img.shields.io/badge/TestFlight-Try%20It%20Now-blue?style=for-the-badge&logo=apple" alt="Download on TestFlight">
+  </a>
 </div>
 
 ##  Features
