@@ -1,25 +1,24 @@
-//
-//  LiveActivityManager.swift
-//  PinBoard
-//
-//  Created by Josh Mansfield on 17/06/2025.
-//
-
 import Foundation
 import ActivityKit
 import CoreData
 import Combine
+import SwiftUI
 
 @available(iOS 16.1, *)
 class LiveActivityManager: ObservableObject {
     static let shared = LiveActivityManager()
     
     private var currentActivity: Activity<PinBoardWidgetsAttributes>?
+    @AppStorage("enableLiveActivity") private var enableLiveActivity = true
     
     private init() {}
     
     func startLiveActivity(for note: Note) {
-        // End any existing activity first
+        guard enableLiveActivity else {
+            print("Live Activity is disabled in settings")
+            return
+        }
+        
         endLiveActivity()
         
         let attributes = PinBoardWidgetsAttributes(appName: "PinBoard")
@@ -44,8 +43,12 @@ class LiveActivityManager: ObservableObject {
     }
     
     func updateLiveActivity(for note: Note) {
+        guard enableLiveActivity else {
+            endLiveActivity()
+            return
+        }
+        
         guard let activity = currentActivity else {
-            // If no activity exists, start a new one
             startLiveActivity(for: note)
             return
         }

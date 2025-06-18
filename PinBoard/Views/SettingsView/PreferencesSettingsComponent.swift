@@ -4,6 +4,7 @@ struct PreferencesSettingsComponent: View {
     @Binding var defaultFontSize: String
     @Binding var defaultIcon: String
     @Binding var showingIconPicker: Bool
+    @AppStorage("enableLiveActivity") private var enableLiveActivity = true
     let accentColor: String
     
     var body: some View {
@@ -36,17 +37,12 @@ struct PreferencesSettingsComponent: View {
                     }
                 }
             }
+            
+            Toggle(isOn: $enableLiveActivity) {
+                Text("Enable Live Activity")
+            }
+            .toggleStyle(SwitchToggleStyle(tint: enableLiveActivity ? AppThemeHelper.accentColor(from: accentColor) : .blue))
         }
     }
-}
-
-#Preview {
-    Form {
-        PreferencesSettingsComponent(
-            defaultFontSize: .constant("medium"),
-            defaultIcon: .constant("note.text"),
-            showingIconPicker: .constant(false),
-            accentColor: "blue"
-        )
-    }
+    
 }

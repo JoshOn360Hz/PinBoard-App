@@ -2,11 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UILaunchScreen</key>
-	<dict>
-		<key>UIImageName</key>
-		<string>Splash</string>
-	</dict>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundleAlternateIcons</key>
@@ -89,6 +84,11 @@
 				</array>
 			</dict>
 		</dict>
+	</dict>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>Splash</string>
 	</dict>
 </dict>
 </plist>

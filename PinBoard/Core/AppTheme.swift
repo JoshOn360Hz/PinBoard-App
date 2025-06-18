@@ -58,7 +58,7 @@ struct AppThemeHelper {
         case "dark":
             return .dark
         default:
-            return nil  
+            return nil 
         }
     }
     

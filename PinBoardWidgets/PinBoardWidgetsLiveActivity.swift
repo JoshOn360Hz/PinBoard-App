@@ -40,12 +40,13 @@ struct PinBoardWidgetsLiveActivity: Widget {
         ActivityConfiguration(for: PinBoardWidgetsAttributes.self) { context in
             HStack(spacing: 12) {
                 Image(systemName: context.state.noteIcon)
-                    .font(.title2)
+                    .font(.title)
                     .foregroundColor(colorFromString(context.state.noteColor))
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(context.state.noteTitle)
                         .font(.headline)
+                        .foregroundColor(.white)
                         .fontWeight(.semibold)
                         .lineLimit(1)
 

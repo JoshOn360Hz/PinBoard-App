@@ -105,10 +105,6 @@ extension Note {
         let sharedDefaults = UserDefaults(suiteName: "group.com.Josh.PinBoard")
         guard let sharedDefaults = sharedDefaults else { return }
         
-        if #available(iOS 16.1, *) {
-            LiveActivityManager.shared.endLiveActivity()
-        }
-        
         if let pinnedNotesData = sharedDefaults.data(forKey: "pinnedNotes"),
            let existingNotes = try? JSONDecoder().decode([PinnedNote].self, from: pinnedNotesData) {
             

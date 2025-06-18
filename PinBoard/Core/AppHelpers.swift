@@ -40,7 +40,6 @@ class NoteOperationsHelper {
             do {
                 let wasPinned = note.isPinned || note.isPinnedToWidget()
                 
-                // Unpin all currently pinned notes
                 let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
                 fetchRequest.predicate = NSPredicate(format: "isPinned == YES")
                 let pinnedNotes = try viewContext.fetch(fetchRequest)

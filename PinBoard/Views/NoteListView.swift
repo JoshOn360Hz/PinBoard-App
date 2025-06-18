@@ -32,42 +32,48 @@ struct NoteListView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                if let pinned = pinnedNote {
-                    Section {
-                        NoteCardComponent(note: pinned)
-                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                Button(role: .destructive) {
-                                    deletePinnedNote()
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
+            Group {
+                if notes.isEmpty {
+                    EmptyStateView(onAddTap: { showingCreateNote = true })
+                } else {
+                    List {
+                        if let pinned = pinnedNote {
+                            Section {
+                                NoteCardComponent(note: pinned)
+                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                        Button(role: .destructive) {
+                                            deletePinnedNote()
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
+                                    }
+                            } header: {
+                                HStack {
+                                    Image(systemName: "pin.fill")
+                                        .foregroundColor(.orange)
+                                    Text("Pinned Note")
+                                        .foregroundColor(.orange)
                                 }
                             }
-                    } header: {
-                        HStack {
-                            Image(systemName: "pin.fill")
-                                .foregroundColor(.orange)
-                            Text("Pinned Note")
-                                .foregroundColor(.orange)
+                        }
+                        
+                        Section {
+                            ForEach(unpinnedNotes, id: \.objectID) { note in
+                                NoteCardComponent(note: note)
+                            }
+                            .onDelete(perform: deleteNotes)
+                        } header: {
+                            HStack {
+                                Text("All Notes")
+                                Spacer()
+                                Text("\(notes.count)")
+                                    .foregroundColor(.secondary)
+                            }
                         }
                     }
-                }
-                
-                Section {
-                    ForEach(unpinnedNotes, id: \.objectID) { note in
-                        NoteCardComponent(note: note)
-                    }
-                    .onDelete(perform: deleteNotes)
-                } header: {
-                    HStack {
-                        Text("All Notes")
-                        Spacer()
-                        Text("\(notes.count)")
-                            .foregroundColor(.secondary)
-                    }
+                    .listStyle(PlainListStyle())
                 }
             }
-            .listStyle(PlainListStyle())
             .navigationTitle("PinBoard")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -88,6 +94,40 @@ struct NoteListView: View {
             }
             .accentColor(AppThemeHelper.accentColor(from: accentColor))
         }
+    }
+}
+
+struct EmptyStateView: View {
+    var onAddTap: () -> Void
+    @AppStorage("accentColor") private var accentColor = "blue"
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "note.text.badge.plus")
+                .font(.system(size: 70))
+                .foregroundColor(AppThemeHelper.accentColor(from: accentColor))
+            
+            Text("No Notes")
+                .font(.title)
+                .fontWeight(.bold)
+            
+            Text("Tap the button below to create your first note")
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+            
+            Button(action: onAddTap) {
+                HStack {
+                    Image(systemName: "plus.circle.fill")
+                    Text("Add Note")
+                }
+                .padding()
+                .foregroundColor(.white)
+                .background(AppThemeHelper.accentColor(from: accentColor))
+                .cornerRadius(10)
+            }
+            .padding(.top, 10)
+        }
+        .padding()
     }
 }
 

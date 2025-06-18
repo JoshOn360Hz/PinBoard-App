@@ -21,8 +21,8 @@ struct ContentView: View {
                 }
         }
         .accentColor(AppThemeHelper.accentColor(from: accentColor))
+        .environment(\.horizontalSizeClass, .compact)
         .onAppear {
-            // Show onboarding if user hasn't completed it
             if !hasCompletedOnboarding {
                 showOnboarding = true
             }

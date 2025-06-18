@@ -8,7 +8,6 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         
-        // Create sample data for previews
         let sampleNote = Note(context: viewContext)
         sampleNote.id = UUID()
         sampleNote.title = "Welcome to PinBoard"
