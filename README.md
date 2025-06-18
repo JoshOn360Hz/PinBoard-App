@@ -1,7 +1,7 @@
 # PinBoard
 
 <div align="center">
-  <img src="PinBoard/Assets.xcassets/AppIcon.appiconset/icon-default.png" alt="PinBoard Logo" width="100" height="100">
+  <img src="PinBoard\Assets.xcassets\AppIcon.appiconset\icon-light.png" alt="PinBoard Logo" width="100" height="100">
   
   *A beautiful, feature-rich note-taking app for iOS with widget support and live activities*
   
